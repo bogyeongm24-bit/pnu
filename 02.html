@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기후 변화 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .stat-card { transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden">
+        <!-- Header -->
+        <div class="gradient-bg p-8 text-center text-white">
+            <h1 class="text-3xl md:text-4xl font-black mb-2">🌡️ 지구의 경고: 5년간의 변화</h1>
+            <p class="text-blue-200 text-lg">2020년 - 2024년 온실가스 및 기온 추이 분석</p>
+        </div>
+
+        <div class="p-6 md:p-10 space-y-10">
+            <!-- Key Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="stat-card p-6 bg-red-50 rounded-2xl border-l-8 border-red-500 shadow-sm">
+                    <p class="text-sm font-bold text-red-600 uppercase">평균 기온 상승</p>
+                    <h2 class="text-4xl font-black text-red-900">+1.3°C</h2>
+                    <p class="text-xs text-red-700 mt-2">5년 만에 급격한 기온 변화</p>
+                </div>
+                <div class="stat-card p-6 bg-blue-50 rounded-2xl border-l-8 border-blue-500 shadow-sm">
+                    <p class="text-sm font-bold text-blue-600 uppercase">이산화탄소 증가</p>
+                    <h2 class="text-4xl font-black text-blue-900">+10.4 ppm</h2>
+                    <p class="text-xs text-blue-700 mt-2">산업 및 생활 탄소 배출 지속</p>
+                </div>
+                <div class="stat-card p-6 bg-orange-50 rounded-2xl border-l-8 border-orange-500 shadow-sm">
+                    <p class="text-sm font-bold text-orange-600 uppercase">메탄 농도 증가</p>
+                    <h2 class="text-4xl font-black text-orange-900">+50 ppb</h2>
+                    <p class="text-xs text-orange-700 mt-2">이산화탄소보다 강한 온실효과</p>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-4 text-gray-800">연도별 평균 기온 추이 (°C)</h3>
+                    <canvas id="tempChart"></canvas>
+                    <p class="mt-4 text-sm text-red-600 font-medium leading-relaxed">
+                        ⚠️ 2022-2023년 구간에서 기온이 1.0°C 급상승하는 이상 현상이 관찰되었습니다.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-4 text-gray-800">온실가스 농도 변화 (CO2)</h3>
+                    <canvas id="co2Chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Insights Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-gray-100">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-blue-600 text-white p-1 rounded mr-2">🔍</span> 분석 인사이트
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span><strong>상관관계:</strong> 온실가스 농도와 기온 상승이 선형적으로 일치합니다.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">•</span>
+                            <span><strong>가속화:</strong> 단순 상승을 넘어 기온 상승 폭이 점점 커지고 있습니다.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-green-600 text-white p-1 rounded mr-2">🌱</span> 우리가 할 수 있는 일
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            <span><strong>에너지 절약:</strong> 사용하지 않는 전원 끄기, 대중교통 이용하기.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            <span><strong>환경 인식:</strong> 기후 변화의 심각성을 친구와 가족에게 공유하기.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-100 p-4 text-center text-xs text-gray-400">
+            데이터 출처: 온난화.csv | 분석 도구: Gemini 2.5 Flash
+        </div>
+    </div>
+
+    <script>
+        const years = ['2020', '2021', '2022', '2023', '2024'];
+        
+        // Temperature Chart
+        new Chart(document.getElementById('tempChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: '평균 기온 (°C)',
+                    data: [13.4, 13.5, 13.6, 14.6, 14.7],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#ef4444'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: false, min: 13, max: 15 } }
+            }
+        });
+
+        // CO2 Chart
+        new Chart(document.getElementById('co2Chart'), {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'CO2 농도 (ppm)',
+                    data: [417.6, 421.4, 422.8, 425.6, 428.0],
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: false, min: 410 } }
+            }
+        });
+    </script>
+</body>
+</html>
