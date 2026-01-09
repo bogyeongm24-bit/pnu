@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부산 음주운전 실태 분석 리포트</title>
+    <!-- Tailwind CSS for modern UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@100;400;700&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
+        .gradient-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .home-btn { position: fixed; top: 20px; left: 20px; z-index: 100; transition: all 0.3s; }
+        .home-btn:hover { transform: scale(1.1); }
+        .chart-container { position: relative; height: 350px; width: 100%; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-btn bg-white text-slate-800 px-4 py-2 rounded-full shadow-lg border border-slate-200 font-bold">
+        <i class="fas fa-home mr-2"></i> 홈으로
+    </a>
+
+    <!-- Hero Section -->
+    <header class="gradient-card text-white py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-blue-500 text-xs px-3 py-1 rounded-full font-bold mb-4 inline-block">사회 기획 리포트</span>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6">"음주운전, 이제는 안 통한다"</h1>
+            <p class="text-xl text-slate-300">부산 지역 사고 건수 4년 새 <span class="text-blue-400 font-bold">28% 급감</span></p>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                    <p class="text-slate-400 text-sm">사고 건수 감소</p>
+                    <p class="text-3xl font-bold">742건 → 533건</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                    <p class="text-slate-400 text-sm">사망자 수 (24년)</p>
+                    <p class="text-3xl font-bold">3명</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm">
+                    <p class="text-slate-400 text-sm">부상자 수 감소율</p>
+                    <p class="text-3xl font-bold">-29.6%</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Section 1: Accident Trend -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <i class="fas fa-chart-line text-blue-600 mr-3"></i> 연도별 사고 증감 비율 추이
+            </h2>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <div class="chart-container">
+                    <canvas id="declineChart"></canvas>
+                </div>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-blue-50">
+                        <p class="text-xs text-slate-500">2021년</p>
+                        <p class="font-bold text-blue-600">-8.95%</p>
+                        <p class="text-[10px] text-slate-400">거리두기 영향</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-red-50">
+                        <p class="text-xs text-slate-500">2022년</p>
+                        <p class="font-bold text-red-600">+1.73%</p>
+                        <p class="text-[10px] text-slate-400">활동량 증가</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-blue-50">
+                        <p class="text-xs text-slate-500">2023년</p>
+                        <p class="font-bold text-blue-600">-9.66%</p>
+                        <p class="text-[10px] text-slate-400">단속 강화</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-blue-50">
+                        <p class="text-xs text-slate-500">2024년</p>
+                        <p class="font-bold text-blue-600">-14.15%</p>
+                        <p class="text-[10px] text-slate-400">의식 개선</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Death & Injury Rate -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold mb-6"><i class="fas fa-skull-crossbones text-red-500 mr-2"></i> 5년간 사망건수 비율 추이</h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="deathRateChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm text-slate-500 text-center">2022년(1.54%) 정점 이후 최저치(0.56%) 기록</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold mb-6"><i class="fas fa-user-injured text-orange-500 mr-2"></i> 5년간 부상건수 비율 동향</h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="injuryRateChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm text-slate-500 text-center">전반적인 완만한 하향 곡선 유지</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Why it decreased -->
+        <section class="mb-16">
+            <div class="bg-blue-600 rounded-3xl p-8 md:p-12 text-white">
+                <h2 class="text-3xl font-bold mb-8">감소의 핵심 원인</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="flex items-start">
+                        <div class="bg-white/20 p-4 rounded-2xl mr-5">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">근본적인 인식 변화</h4>
+                            <p class="text-blue-100 leading-relaxed">'음주운전은 곧 무고한 생명을 앗아가는 예비 살인'이라는 사회적 합의가 전 세대에 걸쳐 정착되었습니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-white/20 p-4 rounded-2xl mr-5">
+                            <i class="fas fa-gavel text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">강력한 법 집행 (윤창호법)</h4>
+                            <p class="text-blue-100 leading-relaxed">처벌 수위 강화와 함께 동승자에게 책임을 묻는 '음주운전 방조죄' 엄벌이 실질적인 예방 효과를 거두고 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Future Task -->
+        <section class="text-center py-10">
+            <h2 class="text-2xl font-bold mb-6">'음주운전 제로'를 향한 과제</h2>
+            <div class="max-w-2xl mx-auto text-slate-600 leading-relaxed italic">
+                "수치상의 감소에 만족하기보다 단 한 건의 사고도 허용하지 않는 무관용의 자세가 필요합니다. 상습 위반자 방지 장치 의무 도입 등 제도적 보완이 지속되어야 합니다."
+            </div>
+            <p class="mt-8 text-sm text-slate-400">ⓒA신문 문보경 기자 | 2025.01.09 리포트</p>
+        </section>
+    </main>
+
+    <script>
+        // 1. 사고 증감 비율 차트
+        const ctxDecline = document.getElementById('declineChart').getContext('2d');
+        new Chart(ctxDecline, {
+            type: 'bar',
+            data: {
+                labels: ['2021년', '2022년', '2023년', '2024년'],
+                datasets: [{
+                    label: '증감률 (%)',
+                    data: [-8.95, 1.73, -9.66, -14.15],
+                    backgroundColor: (context) => {
+                        const val = context.raw;
+                        return val > 0 ? 'rgba(239, 68, 68, 0.7)' : 'rgba(59, 130, 246, 0.7)';
+                    },
+                    borderRadius: 10,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { display: false }, title: { display: true, text: '증감률 (%)' } }
+                }
+            }
+        });
+
+        // 2. 사망건수 비율 차트
+        const ctxDeath = document.getElementById('deathRateChart').getContext('2d');
+        new Chart(ctxDeath, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: '사망률 (%)',
+                    data: [0.67, 1.26, 1.54, 1.02, 0.56],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#ef4444'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // 3. 부상건수 비율 차트
+        const ctxInjury = document.getElementById('injuryRateChart').getContext('2d');
+        new Chart(ctxInjury, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: '부상률 (%)',
+                    data: [159.97, 155.73, 158.33, 153.56, 156.66],
+                    borderColor: '#f97316',
+                    borderWidth: 3,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#f97316'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { min: 150, max: 165 }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
