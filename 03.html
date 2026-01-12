@@ -1,1 +1,288 @@
-https://gemini.google.com/share/cb824195b8fb
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청소년 사이버폭력 피해 실태 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .chart-container { position: relative; height: 350px; width: 100%; }
+        .sub-chart-container { position: relative; height: 280px; width: 100%; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- 헤더 -->
+        <header class="mb-10 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-indigo-100 rounded-full mb-4">
+                <i data-lucide="shield-alert" class="text-indigo-600 w-8 h-8"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">청소년 사이버폭력 피해 실태 보고서</h1>
+            <p class="text-slate-500">2021년 ~ 2024년 피해 경험 및 유형별 변화 분석</p>
+            <div class="mt-4 flex flex-wrap justify-center gap-2">
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-600 shadow-sm">출처: 방송통신위원회 사이버폭력실태조사</span>
+                <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-600 shadow-sm">대상: 초4~고3 청소년</span>
+            </div>
+        </header>
+
+        <!-- 요약 카드 -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="p-2 bg-red-50 text-red-600 rounded-lg"><i data-lucide="alert-triangle"></i></span>
+                    <span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded">+13.7%p (vs '21)</span>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 mb-1">2024 전체 피해 경험률</p>
+                    <h2 class="text-3xl font-bold">37.1%</h2>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="message-square"></i></span>
+                    <span class="text-xs font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded">최대 피해 유형</span>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 mb-1">2024 언어폭력 경험률</p>
+                    <h2 class="text-3xl font-bold">30.2%</h2>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i data-lucide="trending-up"></i></span>
+                    <span class="text-xs font-bold text-amber-500 bg-amber-50 px-2 py-1 rounded">취약 계층</span>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 mb-1">피해율 가장 높은 학령</p>
+                    <h2 class="text-3xl font-bold text-amber-600">초등학생 (41.5%)</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- 메인 차트: 전체 추이 -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 mb-10">
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="trending-up" class="text-indigo-500 w-5 h-5"></i> 연도별 피해 경험 변화 추이
+                </h3>
+                <p class="text-sm text-slate-500">전체 경험률, 언어폭력, 명예훼손의 상관관계</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="mainTrendChart"></canvas>
+            </div>
+            <div class="mt-6 p-4 bg-slate-50 rounded-xl text-sm leading-relaxed border border-slate-100">
+                <strong class="text-indigo-600">핵심 분석:</strong> 2021년에서 2022년 사이 피해 경험률이 <strong>23.4%에서 37.5%로 대폭 상승</strong>한 이후 30%대 중반의 높은 수준을 유지하고 있습니다. 특히 <span class="underline decoration-indigo-300 underline-offset-4 font-semibold text-indigo-700">사이버 언어폭력</span>은 전체 피해의 가장 큰 비중을 차지하며, 명예훼손 또한 2022년 이후 15%대를 기록하며 초기 대비 약 1.5배 증가했습니다.
+            </div>
+        </section>
+
+        <!-- 서브 차트 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <!-- 성별 비교 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="users" class="text-blue-500 w-5 h-5"></i> 성별 피해 경험률 비교
+                </h3>
+                <div class="sub-chart-container">
+                    <canvas id="genderChart"></canvas>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 leading-normal">
+                    2022년 남학생의 피해 경험률이 42.1%로 정점을 찍었으나, 2024년에는 여학생의 피해 경험률이 35%로 상승하며 격차가 좁혀지는 추세입니다.
+                </p>
+            </div>
+
+            <!-- 학령별 비교 -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="school" class="text-amber-500 w-5 h-5"></i> 학령별 피해 경험률 비교
+                </h3>
+                <div class="sub-chart-container">
+                    <canvas id="schoolChart"></canvas>
+                </div>
+                <p class="mt-4 text-xs text-slate-500 leading-normal">
+                    초등학생의 피해 경험률은 2024년 41.5%로 학령 중 가장 높으며, 고등학생은 상대적으로 낮으나 2021년(18%) 대비 2024년(31.8%) 증가폭이 매우 큽니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 상세 분석 테이블 -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-10">
+            <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                <h3 class="font-bold text-slate-900">2024년 특성별 상세 데이터 현황</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 font-medium text-center">
+                            <th class="px-6 py-4 text-left">구분</th>
+                            <th class="px-6 py-4">전체 경험률 (%)</th>
+                            <th class="px-6 py-4">언어폭력 (%)</th>
+                            <th class="px-6 py-4">명예훼손 (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700" id="tableBody">
+                        <!-- JS로 채워짐 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 정책 제언 -->
+        <footer class="bg-indigo-900 text-white p-8 rounded-3xl mb-12 relative overflow-hidden">
+            <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i> 시사점 및 대응 방향
+                </h3>
+                <ul class="space-y-3 text-indigo-100 text-sm md:text-base">
+                    <li class="flex gap-3">
+                        <div class="w-6 h-6 bg-indigo-800 rounded-full flex items-center justify-center flex-shrink-0 text-xs">1</div>
+                        <span><strong>저연령화 현상 심화:</strong> 초등학생의 피해율이 중·고등학생을 상회하고 있어, 저학년 대상의 맞춤형 사이버폭력 예방 교육이 시급합니다.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <div class="w-6 h-6 bg-indigo-800 rounded-full flex items-center justify-center flex-shrink-0 text-xs">2</div>
+                        <span><strong>언어폭력 중심의 피해:</strong> 사이버폭력의 약 80% 이상이 '언어폭력'에서 시작되므로 올바른 디지털 언어 습관 형성을 위한 집중 캠페인이 필요합니다.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <div class="w-6 h-6 bg-indigo-800 rounded-full flex items-center justify-center flex-shrink-0 text-xs">3</div>
+                        <span><strong>성별 격차의 변화:</strong> 과거 남학생 중심의 피해에서 점차 여학생의 피해 경험률이 급상승하고 있는 추세를 고려한 성별 맞춤형 상담 지원이 요구됩니다.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-indigo-700 rounded-full opacity-20 blur-3xl"></div>
+        </footer>
+    </div>
+
+    <script>
+        // Lucide 아이콘 초기화
+        lucide.createIcons();
+
+        // 데이터 정의
+        const years = ['2021', '2022', '2023', '2024'];
+        const mainData = {
+            total: [23.4, 37.5, 36.8, 37.1],
+            verbal: [16.4, 33.3, 33.1, 30.2],
+            defamation: [10.8, 16.1, 15.2, 15.5]
+        };
+
+        const genderData = {
+            male: [23.6, 42.1, 40.1, 39.3],
+            female: [23.2, 32.5, 33.3, 35.0]
+        };
+
+        const schoolData = {
+            elementary: [27.1, 39.3, 39.5, 41.5],
+            middle: [23.3, 38.7, 36.6, 36.4],
+            high: [18.0, 33.4, 33.3, 31.8]
+        };
+
+        // 1. 메인 추이 차트
+        new Chart(document.getElementById('mainTrendChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: '전체 피해 경험률',
+                        data: mainData.total,
+                        borderColor: '#6366f1',
+                        backgroundColor: '#6366f1',
+                        borderWidth: 4,
+                        tension: 0.3,
+                        pointRadius: 6
+                    },
+                    {
+                        label: '사이버 언어폭력',
+                        data: mainData.verbal,
+                        borderColor: '#3b82f6',
+                        borderDash: [5, 5],
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: '사이버 명예훼손',
+                        data: mainData.defamation,
+                        borderColor: '#f43f5e',
+                        borderDash: [3, 3],
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { usePointStyle: true, boxWidth: 6 } }
+                },
+                scales: {
+                    y: { beginAtZero: false, ticks: { callback: v => v + '%' } }
+                }
+            }
+        });
+
+        // 2. 성별 비교 차트 (Bar)
+        new Chart(document.getElementById('genderChart'), {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: '남학생', data: genderData.male, backgroundColor: '#3b82f6', borderRadius: 4 },
+                    { label: '여학생', data: genderData.female, backgroundColor: '#ec4899', borderRadius: 4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { ticks: { callback: v => v + '%' } } }
+            }
+        });
+
+        // 3. 학령별 비교 차트
+        new Chart(document.getElementById('schoolChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: '초등', data: schoolData.elementary, borderColor: '#f59e0b', stepped: 'after' },
+                    { label: '중등', data: schoolData.middle, borderColor: '#10b981', stepped: 'after' },
+                    { label: '고등', data: schoolData.high, borderColor: '#6366f1', stepped: 'after' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { ticks: { callback: v => v + '%' } } }
+            }
+        });
+
+        // 4. 테이블 데이터 렌더링
+        const tableRows = [
+            { name: '합계', total: 37.1, verbal: 30.2, def: 15.5 },
+            { name: '성별(남학생)', total: 39.3, verbal: 32.7, def: 15.7 },
+            { name: '성별(여학생)', total: 35.0, verbal: 27.9, def: 15.3 },
+            { name: '학령별(초등학생)', total: 41.5, verbal: 33.4, def: 16.8 },
+            { name: '학령별(중학생)', total: 36.4, verbal: 29.7, def: 15.3 },
+            { name: '학령별(고등학생)', total: 31.8, verbal: 26.6, def: 14.1 }
+        ];
+
+        const tbody = document.getElementById('tableBody');
+        tableRows.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-slate-50 transition-colors text-center";
+            tr.innerHTML = `
+                <td class="px-6 py-4 font-medium text-left">${row.name}</td>
+                <td class="px-6 py-4 font-semibold text-slate-900">${row.total}</td>
+                <td class="px-6 py-4 text-blue-600">${row.verbal}</td>
+                <td class="px-6 py-4 text-rose-500">${row.def}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    </script>
+</body>
+</html>
