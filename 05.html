@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-컬처 성공 패러다임 분석 보고서</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #0f172a;
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+        }
+        .k-gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: #a855f7;
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(168, 85, 247, 0.5), transparent);
+        }
+        .step-active {
+            color: #a855f7;
+            border-left: 4px solid #a855f7;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 bg-[url('https://images.unsplash.com/photo-1514525253361-bee8718a74a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-fixed bg-center relative">
+        <div class="absolute inset-0 bg-slate-900/80"></div>
+        <div class="relative z-10 animate__animated animate__fadeIn">
+            <span class="px-3 py-1 bg-indigo-600/30 text-indigo-300 rounded-full text-sm font-semibold mb-4 inline-block border border-indigo-500/30">문화산업 전략 보고서</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                '케이팝 데몬 헌터스'로 본<br/>
+                <span class="k-gradient-text italic">K-컬처의 성공 패러다임</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                개인화된 디지털 시대, 한국은 왜 다시 '공동체'를 노래하는가?
+            </p>
+            <div class="mt-12 flex gap-4 justify-center">
+                <a href="#intro" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition shadow-lg shadow-indigo-500/20">분석 시작하기</a>
+                <button onclick="window.print()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-full font-bold transition">PDF 저장</button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+
+    <!-- 1. 서론 -->
+    <section id="intro" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-indigo-500 text-4xl">01</span> 서론: 새로운 이정표
+                </h2>
+                <div class="space-y-4 text-slate-400 leading-relaxed text-lg">
+                    <p><strong class="text-white">‘케이팝 데몬 헌터스’(이하 ‘케데헌’)</strong>는 단순한 애니메이션이 아닙니다. ‘오징어 게임’의 기록을 넘어서며 서구 평론가들의 예상을 뒤엎은 문화적 현상입니다.</p>
+                    <p>처음에는 키치함에 대한 우려가 컸으나, 극장에서 노래를 따라 부르는 <span class="text-pink-400 font-bold">'싱어롱(Sing-along)'</span> 현상을 통해 K-컬처가 가진 독보적인 참여의 힘을 증명했습니다.</p>
+                    <div class="p-6 bg-slate-800/50 rounded-xl border-l-4 border-indigo-500 italic">
+                        "제목만 듣고 이게 뭐야? 하며 안보려했는데… 이제는 노래를 외우고 있어요."
+                        <span class="block mt-2 text-sm text-slate-500">- 유튜브 이용자 'Claymore-chopchop'</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group animate__animated animate__fadeInRight">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1615467177638-2741670c6a73?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="K-Pop Concert" class="w-full h-80 object-cover opacity-80">
+                    <div class="p-6">
+                        <h4 class="font-bold text-white mb-2">분석 키워드: 공동체적 문화 경험</h4>
+                        <p class="text-sm text-slate-400">서구의 수동적 감상 모델과 대비되는 한국 고유의 참여적 DNA 분석</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 2. 공동체적 경험 -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-16">K-컬처의 근본 동력: <span class="text-purple-400">공동체적 경험</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">경계 없는 무대</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">전통 풍악, 사물놀이에서 시작된 생산자와 소비자의 일체화. 관중이 곧 연주자가 되는 유기적 상호작용.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">노래방 & 떼창 문화</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">음악을 '듣는 것'이 아닌 '행하는 것'으로 정의. 전 세계 팬덤을 결집시키는 강력한 문화적 행동 양식.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">참여의 장(場)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">케데헌의 '싱어롱' 현상처럼, 콘텐츠를 매개로 팬들이 직접 생산 주체가 되는 현대적 발현.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 p-10 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 rounded-3xl border border-white/5 inline-block text-left max-w-4xl">
+                <p class="text-2xl font-light text-indigo-100 leading-relaxed">
+                    <span class="text-4xl text-indigo-400 font-serif">"</span>노래를 부르는 사람과 노래를 듣는 사람이 같은 사람이다. 이거를 이해하지 못한 한 너네는 K팝이 뭔지 절대로 이해할 수 없다.<span class="text-4xl text-indigo-400 font-serif">"</span>
+                </p>
+                <p class="mt-4 text-slate-400 font-bold">- 조승연, '조승연의 탐구생활' 中</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 비교 분석 -->
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center">서구 문화 vs K-컬처: <span class="text-indigo-400 italic">구조적 비교</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <!-- 서구 모델 -->
+            <div class="p-12 bg-slate-800/30">
+                <h3 class="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM5 9a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"></path></svg>
+                    서구의 수직적 위계
+                </h3>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-red-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">문화의 파편화:</span>
+                            <p class="text-slate-400">아방가르드를 쫓아 중심(Center)에서 벗어나 경계(Edge)로 향하는 예술가들.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-red-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">수직적 평가 시스템:</span>
+                            <p class="text-slate-400">전문 평론가와 매체가 주도하는 권위주의적 정보 흐름.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-red-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">High/Low 구분:</span>
+                            <p class="text-slate-400">"대중문화는 문화가 아니다"라는 식의 계층적 예술 인식.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 한국 모델 -->
+            <div class="p-12 bg-indigo-900/20 border-l border-white/10">
+                <h3 class="text-2xl font-bold mb-8 flex items-center gap-3 text-indigo-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
+                    K-컬처의 수평적 융합
+                </h3>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-indigo-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">비어있는 중심 점유:</span>
+                            <p class="text-slate-400">모두가 함께 즐길 수 있는 보편적이고 건전한 '주류'의 가치 회복.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-indigo-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">수평적 입소문:</span>
+                            <p class="text-slate-400">SNS와 단톡방을 통한 개인 간의 공유가 전문가의 권위를 압도.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="mt-1 text-indigo-500">●</div>
+                        <div>
+                            <span class="font-bold text-white">상향 평준화:</span>
+                            <p class="text-slate-400">대중음악에 '고급 문화' 수준의 정성과 기교를 투입한 프리미엄 전략.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 소프트파워 & 여론 -->
+    <section class="py-24 bg-[url('https://images.unsplash.com/photo-1459749411177-042180ce673c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-fixed relative">
+        <div class="absolute inset-0 bg-slate-900/90"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl font-bold mb-16 text-center italic">Digital Softpower: <span class="text-pink-500">대중의 목소리</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 댓글 카드 1 -->
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-pink-500/20 text-pink-500 flex items-center justify-center font-bold">K</div>
+                        <span class="text-sm font-bold">@NationalPride_99</span>
+                    </div>
+                    <p class="text-slate-300">"김구 선생님, 일이 커지고 있어요! 한국 문화가 전 세계 극장에서 울려 퍼지네요."</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded">#국가이미지</span>
+                    </div>
+                </div>
+                <!-- 댓글 카드 2 -->
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center font-bold">E</div>
+                        <span class="text-sm font-bold">@EconomicImpact</span>
+                    </div>
+                    <p class="text-slate-300">"이런 무형의 가치는 돈으로 환산이 안 되죠... 그런데 결국 엄청난 관광 수익과 수출로 이어짐."</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-300 rounded">#경제적효과</span>
+                    </div>
+                </div>
+                <!-- 댓글 카드 3 -->
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center font-bold">G</div>
+                        <span class="text-sm font-bold">@GenerationX_Fan</span>
+                    </div>
+                    <p class="text-slate-300">"50대 아저씨인데 애니메이션 보고 이렇게 신난 건 처음입니다. 보편적인 힘이 있네요."</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded">#세대통합</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center">
+                <h3 class="text-2xl font-bold mb-8">K-컬처는 단순한 장르가 아닌, <span class="underline decoration-indigo-500 underline-offset-8">새로운 패러다임</span>입니다.</h3>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <div class="px-6 py-3 bg-slate-800 rounded-full border border-slate-700">보편적 가치</div>
+                    <div class="px-6 py-3 bg-slate-800 rounded-full border border-slate-700">공동체적 즐거움</div>
+                    <div class="px-6 py-3 bg-slate-800 rounded-full border border-slate-700">수평적 연결</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 결론 -->
+    <footer class="py-24 px-6 bg-slate-950 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-5xl font-black mb-10 leading-tight">
+                분열의 시대, <br/>
+                <span class="k-gradient-text italic">K-컬처가 제안하는 '연결'</span>
+            </h2>
+            <div class="h-1 w-24 bg-indigo-500 mx-auto mb-10"></div>
+            <p class="text-xl text-slate-400 leading-relaxed mb-12">
+                극단적인 개인주의 속에서 우리가 잊고 있었던 원초적인 즐거움 — 
+                함께 노래하고 춤추며 '하나'임을 확인하는 경험을 K-컬처가 전 세계에 선사하고 있습니다. 
+                그것이 바로 빌보드 1위보다 값진 <strong class="text-white">K-컬처의 진정한 가치</strong>입니다.
+            </p>
+            <p class="text-slate-500 text-sm">© 2024 K-Culture Paradigm Analysis Report | Based on 'K-Pop Demon Hunters'</p>
+        </div>
+    </footer>
+
+    <script>
+        // 간단한 스크롤 애니메이션 효과 트리거 (Intersection Observer 활용 가능)
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.glass-card, h2, ul li').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
