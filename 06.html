@@ -24,12 +24,37 @@
             font-weight: 600;
             margin-bottom: 1rem;
         }
+        /* 고정 네비게이션 스타일 */
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
+    <!-- 고정 네비게이션 바 (홈 버튼 포함) -->
+    <nav class="sticky-nav text-white py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 hover:text-blue-400 transition">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-bold text-lg hidden sm:inline">AI 리포트 홈</span>
+            </a>
+            <div class="flex gap-4 md:gap-8 text-sm md:text-base font-medium">
+                <a href="#autonomy" class="hover:text-blue-400 transition">자율성</a>
+                <a href="#deepfake" class="hover:text-red-400 transition">딥페이크</a>
+                <a href="#ethics" class="hover:text-emerald-400 transition">윤리</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Header & Hero -->
-    <header class="hero-gradient text-white py-20 px-6 text-center">
+    <header id="home" class="hero-gradient text-white pt-32 pb-20 px-6 text-center">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                 인공지능의 <span class="text-blue-400">자율성</span>과<br>무너지는 <span class="text-red-400">윤리적 경계</span>
@@ -49,7 +74,7 @@
     <main class="max-w-6xl mx-auto px-6 py-16">
 
         <!-- Section 1: AI Autonomy -->
-        <section id="autonomy" class="mb-24 scroll-mt-20">
+        <section id="autonomy" class="mb-24 scroll-mt-24">
             <span class="section-tag bg-blue-100 text-blue-700">핵심 이슈 01: 자율성과 통제권</span>
             <h2 class="text-3xl font-bold mb-8">창발적 자율성: 인간의 통제를 벗어나는 AI</h2>
             
@@ -90,7 +115,7 @@
         </section>
 
         <!-- Section 2: Deepfake -->
-        <section id="deepfake" class="mb-24 scroll-mt-20">
+        <section id="deepfake" class="mb-24 scroll-mt-24">
             <span class="section-tag bg-red-100 text-red-700">핵심 이슈 02: 진실의 붕괴</span>
             <h2 class="text-3xl font-bold mb-8">딥페이크: "보는 것이 믿는 것"의 시대 종료</h2>
 
@@ -129,7 +154,7 @@
         </section>
 
         <!-- Section 3: AI Ethics & Copyright -->
-        <section id="ethics" class="mb-24 scroll-mt-20">
+        <section id="ethics" class="mb-24 scroll-mt-24">
             <span class="section-tag bg-emerald-100 text-emerald-700">핵심 이슈 03: 창작과 소유권</span>
             <h2 class="text-3xl font-bold mb-8">생성형 AI와 저작권: 누가 '작가'인가?</h2>
 
